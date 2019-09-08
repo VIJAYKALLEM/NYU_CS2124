@@ -34,14 +34,13 @@ char decrypt_char(char original_char, int step) {
     return(original_char);
 }
 
-string decrypt_line(string line, int step) {
+void decrypt_line(string& line, int step) {
     // line takes the line and step as input
     // iterates through each character and decrypts it
     // returns the decrypted line
     for (size_t i=0; i< line.size(); ++i) {
         line[i] = decrypt_char(line[i], step);
     }
-    return(line);
 }
 
 string open_file_and_decrypt_file(ifstream& file) {
@@ -53,7 +52,7 @@ string open_file_and_decrypt_file(ifstream& file) {
     while (getline(file, line)) {
         
         // for each line in the file, calls function decrypt_line on that string
-        line = decrypt_line(line, step);
+        decrypt_line(line, step);
         // adds line on TOP of the other decrypted text, to reverse the order of the lines.
         decrypted_text = line + "\n" + decrypted_text;
     }
