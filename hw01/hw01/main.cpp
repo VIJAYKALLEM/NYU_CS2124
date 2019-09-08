@@ -1,3 +1,8 @@
+// Simran Soin
+// CS UY 2124
+// 11 September 2019
+// Homework 1 -- Caesar Cypher
+
 #include <iostream>
 #include <string>
 #include <fstream>
