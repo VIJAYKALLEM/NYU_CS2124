@@ -1,0 +1,18 @@
+•We are given a file of text that has been encrypted. For simplicity, we will assume the name is "encrypted.txt".  That will save you having to ask the user.
+
+
+•Luckily we know what algorithm was used, the classic Caesar cypher. Each lowercase alphabetic character has be modified by “rotating” it through the alphabet some number of steps.
+
+
+•For example, if the number of steps was three and the original letter was 'b' then the encrypted file would instead have a 'e' in the same place, since 'e' is three letters past 'b' in the alphabet.
+
+
+•Clearly we have to address the problem of what to do when the letter to be encrypted is too close to the end of the alphabet. For example, what should we do if we have to encrypt the letter 'y', again with the number of steps specified as three. The first step takes us to 'z'. What about the second step? We wrap around, back to 'a'. The third and final step then is easy, it will take us on to 'b'.
+
+
+•Your program will read an encrypted file. You are to decrypt it.
+	◦The first item in the file will be an int, the number of steps that was used in the rotation.
+	◦The following lines will contain the text that you are to decode. Only lowercase alphabetic characters have been encrypted. The rest, e.g. uppercase, digits and punctuation all appear in the encrypted file the same way they did in the original.
+
+
+•Oh, one other thing. To make the encoded file more difficult, they thought it would be clever to reverse the lines in the file. So what should be the first line shows up last, etc.
