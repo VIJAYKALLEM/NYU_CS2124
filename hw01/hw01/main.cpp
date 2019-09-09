@@ -8,38 +8,17 @@
 #include <fstream>
 using namespace std;
 
-char get_char_from_rotated_index(int index) {
-    // input is a number corresponding to letter of alphabet
-    // output is the corresponding letter
-    // e.g. get_char(1) returns a
-    string alphabet = "abcdefghijklmnopqrstuvwxyz";
-    // if index is less than 1, it wraps around to 26
-    if (index < 0) {
-        index = index + 26;
-    }
-    char retval = alphabet[index];
-    return(retval);
-}
-
-
-char decrypt_char(char original_char, int step) {
-    string alphabet = "abcdefghijklmnopqrstuvwxyz";
-    for (int i=0; i<26; ++i) {
-        // loops through each letter in alphabet and checks if the given character is that letter
-        if (alphabet[i] == original_char) {
-            return(get_char_from_rotated_index(i-step));
-        }
-    }
-    // if arrives here, then character was not in lowercase alphabet
-    return(original_char);
-}
-
 void decrypt_line(string& line, int step) {
     // line takes the line and step as input
     // iterates through each character and decrypts it
     // returns the decrypted line
     for (size_t i=0; i< line.size(); ++i) {
-        line[i] = decrypt_char(line[i], step);
+        if (line[i] > 96 && line[i] < 123) {
+            line[i] = line[i] - step;
+            if (line[i] < 97){
+                line[i] = line[i] + 26;
+            }
+        }
     }
 }
 
