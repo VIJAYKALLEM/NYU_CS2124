@@ -27,13 +27,12 @@ void decrypt_line(string& line, int step) {
 }
 
 vector<string> open_file_and_decrypt_file(ifstream& file) {
-    vector<string> decrypted_text(4);
+    vector<string> decrypted_text;
     string line;
     int step;
     // reads the first thing in the file and sets it as the int "step"
     file >> step;
     while (getline(file, line)) {
-        
         // for each line in the file, calls function decrypt_line on that string
         decrypt_line(line, step);
         decrypted_text.push_back(line);
