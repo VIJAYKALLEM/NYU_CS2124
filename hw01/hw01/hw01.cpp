@@ -16,10 +16,10 @@ void decrypt_line(string& line, int step) {
     // iterates through each character and decrypts it
     // returns the decrypted line
     for (size_t i=0; i< line.size(); ++i) {
-        if (line[i] > 96 && line[i] < 123) {
+        if (line[i] >= 'a' && line[i] <= 'z') {
             // if char is out of lowercase alphabet ASCII range, it adds 26 to wrap around
             line[i] = line[i] - step;
-            if (line[i] < 97){
+            if (line[i] < 'a'){
                 line[i] += 26;
             }
         }
