@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EC5683222322E0A00069E2A4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5683212322E0A00069E2A4 /* main.cpp */; };
+		EC5683222322E0A00069E2A4 /* hw01.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5683212322E0A00069E2A4 /* hw01.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,7 @@
 
 /* Begin PBXFileReference section */
 		EC56831E2322E0A00069E2A4 /* hw01 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = hw01; sourceTree = BUILT_PRODUCTS_DIR; };
-		EC5683212322E0A00069E2A4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		EC5683212322E0A00069E2A4 /* hw01.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = hw01.cpp; sourceTree = "<group>"; };
 		EC5683282322E1040069E2A4 /* encrypted.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = encrypted.txt; path = ../../../../../Downloads/encrypted.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,7 +58,7 @@
 		EC5683202322E0A00069E2A4 /* hw01 */ = {
 			isa = PBXGroup;
 			children = (
-				EC5683212322E0A00069E2A4 /* main.cpp */,
+				EC5683212322E0A00069E2A4 /* hw01.cpp */,
 				EC5683282322E1040069E2A4 /* encrypted.txt */,
 			);
 			path = hw01;
@@ -121,7 +121,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC5683222322E0A00069E2A4 /* main.cpp in Sources */,
+				EC5683222322E0A00069E2A4 /* hw01.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +248,7 @@
 				EC5683272322E0A00069E2A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

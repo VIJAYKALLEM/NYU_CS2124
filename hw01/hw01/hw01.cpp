@@ -10,6 +10,7 @@ Homework 1 -- Caesar Cypher
 #include <fstream>
 #include <vector>
 using namespace std;
+const int alphabet_length = 26;
 
 void decrypt_line(string& line, int step) {
     // function takes the line and step as input
@@ -20,7 +21,7 @@ void decrypt_line(string& line, int step) {
             // if char is out of lowercase alphabet ASCII range, it adds 26 to wrap around
             line[i] = line[i] - step;
             if (line[i] < 'a'){
-                line[i] += 26;
+                line[i] += alphabet_length;
             }
         }
     }
