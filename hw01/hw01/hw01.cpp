@@ -12,6 +12,24 @@ Homework 1 -- Caesar Cypher
 using namespace std;
 const int alphabet_length = 26;
 
+void decrypt_line(string& line, int step);
+
+vector<string> open_file_and_decrypt_file(ifstream& file);
+
+int main() {
+    ifstream file("encrypted.txt");
+    if (!file) {
+        cout << "Could not open the file";
+    }
+    else {
+        vector<string> decrypted_file = open_file_and_decrypt_file(file);
+        for (size_t vector_size=decrypted_file.size() - 1; vector_size>0; --vector_size) {
+            cout << decrypted_file[vector_size] << endl;
+        }
+    }
+    return 0;
+}
+
 void decrypt_line(string& line, int step) {
     // function takes the line and step as input
     // iterates through each character and decrypts it
@@ -40,18 +58,4 @@ vector<string> open_file_and_decrypt_file(ifstream& file) {
     }
     file.close();
     return(decrypted_text);
-}
-
-int main() {
-    ifstream file("encrypted.txt");
-    if (!file) {
-        cout << "Could not open the file";
-    }
-    else {
-        vector<string> decrypted_file = open_file_and_decrypt_file(file);
-        for (size_t vector_size=decrypted_file.size() - 1; vector_size>0; --vector_size) {
-            cout << decrypted_file[vector_size] << endl;
-        }
-    }
-    return 0;
 }
