@@ -1,0 +1,17 @@
+We have been given a file of chemical formulae, specifically hydrocarbons. Hydrocarbons consist of only hydrogen and carbon atoms.
+
+Each line of the file contains the name of the chemical followed by its molecular formula which will be in the form:
+C#H#
+where the two #'s represent the number of carbon (C) and hydrogen (H) atoms, respectively..
+(No name in the file contains blanks.)
+
+Because hyrdocarbons with the same molecular formula can appear in many structural forms and each of the forms has a different name, the same molecular formula might appear more than once in the file, each time with different a name. (e.g.: Butane and 2-methylpropane both have the molecular formula C4H10.)
+
+Our goal is to maintain one entry for each unique molecular formula along with all the names for that formula. After they have all been read in, we will sort the vector by carbon and hydrogen, and finally display all the entries in the sorted vector.
+
+Each molecular formula will be kept in a struct with three fields:
+
+the name(s) for formula. Note that is a collection of names
+the number of carbon atoms
+the number of hydrogen atoms
+We will be storing all these structs in a vector.
