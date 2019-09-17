@@ -1,0 +1,1 @@
+We want to read a file, display it to the screen and report how many "words" there are.
