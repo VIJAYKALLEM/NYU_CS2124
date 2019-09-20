@@ -106,15 +106,15 @@ public:
         return board[row_number][col_number].visible;
     }
     
-    bool play(size_t row_number, size_t col_number){
-        if (board[row_number][col_number].bomb){
+    bool play(size_t given_row_num, size_t given_col_num){
+        if (board[given_row_num][given_col_num].bomb){
             // if the selected tile is a bomb, return false
             return false;
         }
-        else if (board[row_number][col_number].num_adjacent_bombs > 0){
+        else if (board[given_row_num][given_col_num].num_adjacent_bombs > 0){
             // if the selected tile has a nonzero # of adjacent bombs
                     // only make that tile visible
-            board[row_number][col_number].visible = true;
+            board[given_row_num][given_col_num].visible = true;
         }
         else {
             // if we are here, the # of adjacent bombs < 0
@@ -123,13 +123,13 @@ public:
             // 3) iterate through all of the adjacent tiles
                     // a. if it is the original tile --> make visible
                     // b. if it is an adjacent tile --> recursively play(tile)
-            if (board[row_number][col_number].num_adjacent_bombs != -1
-                && !isVisible(row_number, col_number)){
-                vector<size_t> cols_to_play = {col_number-1, col_number, col_number+1};
-                vector<size_t> rows_to_play = {row_number-1, row_number, row_number+1};
+            if (board[given_row_num][given_col_num].num_adjacent_bombs != -1
+                && !isVisible(given_row_num, given_col_num)){
+                vector<size_t> cols_to_play = {given_col_num-1, given_col_num, given_col_num+1};
+                vector<size_t> rows_to_play = {given_row_num-1, given_row_num, given_row_num+1};
                 for (size_t curr_row : rows_to_play){
                     for (size_t curr_col : cols_to_play){
-                        if (curr_row == row_number && curr_col == col_number){
+                        if (curr_row == given_row_num && curr_col == given_col_num){
                             board[curr_row][curr_col].visible = true;
                         }
                         else {
