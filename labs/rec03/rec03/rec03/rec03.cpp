@@ -27,26 +27,54 @@ void fillInAdjacents(vector<vector<Tile>>& board);
 
 
 class Minesweeper{
-    friend void createBoard(vector<vector<Tile>>& board);
+    friend void fillInAdjacents(vector<vector<Tile>>& board);
 public:
-    Minesweeper(){ createBoard(board);};
+    Minesweeper(){
+        // creates initial board
+        Tile border_block{false, -1, false};
+        for (int curr_row = 0; curr_row < BOARD_SIZE_INCLUDING_BORDER; ++curr_row){
+            vector<Tile> row;
+            for (int curr_val_in_row = 0; curr_val_in_row<BOARD_SIZE_INCLUDING_BORDER;
+                 ++curr_val_in_row){
+                // if it is the first row, last row, first column, or last column: empty tile
+                if (curr_row == 0 || curr_row == BOARD_SIZE_INCLUDING_BORDER-1 ||
+                    curr_val_in_row == 0 || curr_val_in_row == BOARD_SIZE_INCLUDING_BORDER-1){
+                    row.push_back(border_block);
+                }
+                else{
+                    // randomly assigns bomb
+                    if (rand()%100 < BOMB_PROBABILITY){
+                        Tile bomb{true, 0, false};
+                        row.push_back(bomb);
+                    }
+                    else{
+                        // if not a bomb, sets default empty tiles
+                        Tile curr_tile{false, 0, false};
+                        row.push_back(curr_tile);
+                    }
+                }
+            }
+            board.push_back(row);
+        }
+        // fills in all the default empty tiles with the number of adjacent bombs
+        fillInAdjacents(board);
+    };
     
     void display(bool display_everything) const{
         for (size_t row_index=1; row_index <(board.size()-1); ++ row_index){
             for (size_t col_index = 1; col_index < (board[row_index].size()-1); ++col_index){
-                if (display_everything || board[row_index][col_index].visible){
-                    if (board[row_index][col_index].bomb){
-                        cout << " B ";
-                    }
-                    else{
+                if (display_everything && board[row_index][col_index].bomb){
+                    // if the game is lost, display all the bombs
+                    cout << " B ";
+                }
+                else if (board[row_index][col_index].visible){
+                    // if the tile is visible, display it
                         cout << " " << board[row_index][col_index].num_adjacent_bombs << " ";
-                    }
-                
                 }
-                else {
-                    cout << " - ";
-                }
+                // if the game isnt lost AND the tile isnt visible, put a placeholder '-'.
+                else {cout << " - ";}
             }
+            //end of each row ends line
             cout << endl;
         }
     }
@@ -55,51 +83,48 @@ public:
         for (size_t row_index=1; row_index < (board.size()-1); ++ row_index){
             for (size_t col_index = 1; col_index < (board[row_index].size()-1); ++col_index){
                 if(!board[row_index][col_index].bomb && !board[row_index][col_index].visible){
+                    // if a non-bomb tile is not visible, the game is not done
                     return false;
                 }
             }
         }
+        // if we iterate through everything without returning false, then the game is done
         return true;
     }
     
     bool validRow(size_t row_number) const{
-        
-        if(row_number >= 1 && row_number < (board.size()-1)){
-            return true;
-        }
-        else{
-            return false;
-        }
+        // returns true if row is within the border limits
+        return (row_number >= 1 && row_number < (board.size()-1));
     }
     
     bool validCol(size_t col_number) const{
-        
-        if(col_number >= 1 && col_number < (board[1].size()-1)){
-            return true;
-        }
-        else{
-            return false;
-        }
+        // returns true if col is within the border limits
+        return (col_number >= 1 && col_number < (board[1].size()-1));
     }
     
     bool isVisible(size_t row_number, size_t col_number) const{
-        if (board[row_number][col_number].visible){
-            return true;
-        }
-        else {
-            return false;
-        }
+        return board[row_number][col_number].visible;
     }
     
     bool play(size_t row_number, size_t col_number){
         if (board[row_number][col_number].bomb){
+            // if the selected tile is a bomb, return false
             return false;
         }
         else if (board[row_number][col_number].num_adjacent_bombs > 0){
+            // if the selected tile has a nonzero # of adjacent bombs
+                    // only make that tile visible
             board[row_number][col_number].visible = true;
         }
         else {
-            if (board[row_number][col_number].num_adjacent_bombs != -1 && !isVisible(row_number, col_number)){
+            // if we are here, the # of adjacent bombs < 0
+            // 1) check that the tile isnt a border tile (num_adjacent_bombs = -1)
+            // 2) check that the tile isnt already visible
+            // 3) iterate through all of the adjacent tiles
+                    // a. if it is the original tile --> make visible
+                    // b. if it is an adjacent tile --> recursively play(tile)
+            if (board[row_number][col_number].num_adjacent_bombs != -1
+                && !isVisible(row_number, col_number)){
                 vector<size_t> cols_to_play = {col_number-1, col_number, col_number+1};
                 vector<size_t> rows_to_play = {row_number-1, row_number, row_number+1};
                 for (size_t curr_row : rows_to_play){
@@ -114,6 +139,8 @@ public:
                 }
             }
         }
+        // if num_adjacent tiles <= 0, we reach here and return true
+        // (we return true because it is not a bomb, so we successfully played the tile)
         return true;
     }
     
@@ -124,6 +151,7 @@ private:
 
 
 int main() {
+    //seed the random number sequence
     srand(time(NULL));
     Minesweeper sweeper;
     // Continue until only invisible cells are bombs
@@ -166,7 +194,9 @@ int main() {
 }
 
 
-int getNumAdjacentBombs(const vector<vector<Tile>>& board, size_t col_index, size_t row_index){
+int getNumAdjacentBombs(const vector<vector<Tile>>& board,
+                        size_t col_index, size_t row_index){
+    // checks every adjacent cell and returns the total number of adjacent bombs
     int num_bombs_to_add = 0;
     vector<size_t> cols_to_check = {col_index-1, col_index, col_index+1};
     vector<size_t> rows_to_check = {row_index-1, row_index, row_index+1};
@@ -182,42 +212,20 @@ int getNumAdjacentBombs(const vector<vector<Tile>>& board, size_t col_index, siz
 
 
 void fillInAdjacents(vector<vector<Tile>>& board){
+    // calls getNumAdjacentBombs on every non-bomb tile in the row
+    // sets the tile.num_adjacent_bombs to getNumAdjacentBombs
     for (size_t row_index = 1; row_index < board.size() - 1; ++row_index){
         // start from 1 and end 1 early to account for borders
         vector<Tile>& curr_row = board[row_index];
-        for (size_t col_index = 1; col_index < board[row_index].size() - 1; ++col_index){
+        for (size_t col_index = 1; col_index < board[row_index].size() - 1;
+             ++col_index){
             // start from 1 and end 1 early to account for borders
             Tile& curr_tile = curr_row[col_index];
             if (!curr_tile.bomb){
-                curr_tile.num_adjacent_bombs += getNumAdjacentBombs(board, col_index, row_index);
+                curr_tile.num_adjacent_bombs +=
+                getNumAdjacentBombs(board, col_index, row_index);
                 
             }
         }
     }
-}
-
-
-void createBoard(vector<vector<Tile>>& board){
-    Tile border_block{false, -1, false};
-    for (int curr_row = 0; curr_row < BOARD_SIZE_INCLUDING_BORDER; ++curr_row){
-        vector<Tile> row;
-        for (int curr_val_in_row = 0; curr_val_in_row<BOARD_SIZE_INCLUDING_BORDER; ++curr_val_in_row){
-            // if it is the first row, the last row, the first column, or last column: should be empty tile
-            if (curr_row == 0 || curr_row == BOARD_SIZE_INCLUDING_BORDER-1 || curr_val_in_row == 0 || curr_val_in_row == BOARD_SIZE_INCLUDING_BORDER-1){
-                row.push_back(border_block);
-            }
-            else{
-                if (rand()%100 < BOMB_PROBABILITY){
-                    Tile bomb{true, 0, false};
-                    row.push_back(bomb);
-                }
-                else{
-                    Tile curr_tile{false, 0, false};
-                    row.push_back(curr_tile);
-                }
-            }
-        }
-        board.push_back(row);
-    }
-    fillInAdjacents(board);
 }
