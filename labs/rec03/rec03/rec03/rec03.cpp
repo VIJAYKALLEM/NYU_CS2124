@@ -25,7 +25,6 @@ int getNumAdjacentBombs(const vector<vector<Tile>>& board, size_t col_index, siz
 void fillInAdjacents(vector<vector<Tile>>& board);
 
 
-
 class Minesweeper{
     friend void fillInAdjacents(vector<vector<Tile>>& board);
 public:
