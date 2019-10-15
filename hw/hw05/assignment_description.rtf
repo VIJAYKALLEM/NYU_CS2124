@@ -1,0 +1,194 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 HelveticaNeue-Italic;
+\f3\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red25\green25\blue25;\red255\green255\blue255;\red38\green38\blue38;
+\red247\green247\blue247;\red242\green242\blue242;}
+{\*\expandedcolortbl;;\cssrgb\c12941\c12941\c12941;\cssrgb\c100000\c100000\c100000;\cssrgb\c20000\c20000\c20000;
+\cssrgb\c97647\c97647\c97647;\cssrgb\c96078\c96078\c96078;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl420\sa200\partightenfactor0
+
+\f0\b\fs40 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Focus\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl320\partightenfactor0
+\ls1\ilvl0
+\f1\b0\fs28 \cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Dynamic memory\cb1 \
+\pard\pardeftab720\sl420\sa200\partightenfactor0
+
+\f0\b\fs40 \cf2 \cb3 Problem:\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\b0\fs28 \cf2 Building on previous assignments, we will be reading a file of commands to create Nobles and Warriors, and sending them off to battle.\
+Key differences:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl320\partightenfactor0
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Each time a warrior or a noble is defined, we will create it on the heap.\cb1 \
+\ls2\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 We will keep track of the nobles\'a0in a vector of pointers to nobles.\cb1 \
+\ls2\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 We will keep track of\'a0
+\f2\i all warriors
+\f1\i0 \'a0using a vector of pointers to warriors.\cb1 \
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+\cf2 \cb3 The input file will be named "
+\f3\fs25\fsmilli12600 \cf3 \cb4 \strokec3 nobleWarriors.txt
+\f1\fs28 \cf2 \cb3 \strokec2 ".\
+\pard\pardeftab720\sl360\sa180\partightenfactor0
+
+\f0\b\fs36 \cf2 Commands\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl320\partightenfactor0
+\ls3\ilvl0
+\f1\b0\fs28 \cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Noble. Create a Noble on the heap.\cb1 \
+\ls3\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Warrior. Create a Warrior on the heap.\cb1 \
+\ls3\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Hire. Call the Noble's hire method.\cb1 \
+\ls3\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Fire. Call the Noble's fire method.\cb1 \
+\ls3\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Battle. Call the Noble's battle method.\cb1 \
+\ls3\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Status. The status command shows the nobles, together with their armies, as we did previously. In addition, it will show separately the warriors who do not currentle have a employer\cb1 \
+\ls3\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Clear. Clear out all the nobles and warriors that were created.\cb1 \
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+\cf2 \cb3 Our application is going to rely on each Noble having a unique name and each Warrior having a unique name. Otherwise, how would we be sure who we were hiring (or firing). Note that this is\'a0\ul not\ulnone \'a0a requirement of the Noble and Warrior classes themselves, just of this particular\'a0
+\f2\i use
+\f1\i0 \'a0of them, i.e. our application.\
+Whenever you are displaying a Noble or a Warrior, you will\'a0\ul use\ulnone \'a0the\'a0
+\f0\b output operator
+\f1\b0 \'a0for the class.\
+\pard\pardeftab720\sl360\sa180\partightenfactor0
+
+\f0\b\fs36 \cf2 Handle errors!\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\b0\fs28 \cf2 Previously we promised that all of the commands we gave you the input would be valid. Now we would like you to take some responsibility for checking the input. First, we still guarantee that the\'a0\ul format\ulnone \'a0of the file will be correct. That means that the Warrior command will always have a name and a strength. The Battle command will always have two names. The Status command will not have any other information on it than just the word Status.\
+However, you will need to detect and report any issues indicating inconsistencies, such as:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl320\partightenfactor0
+\ls4\ilvl0\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Noble command: if a Noble with a given name already exists.\cb1 \
+\ls4\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Warrior command:if a Warrior with a given name already exists.\cb1 \
+\ls4\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Hire command: If a Noble tries to hire a Warrior and either of them do not exist.\cb1 \
+\ls4\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Fire command: If a Noble tries to fire a Warrior and either the Noble does not exist or does not have the Warrior by that name in this army.\cb1 \
+\ls4\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Battle command: If a Noble initiates a battle with another Noble, but one or the other does not exist.\cb1 \
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+\cf2 \cb3 We have not specified the format of these error messages, so we'll leave that up to you. (You get to be creative!)\
+Example input file (no errors):\
+\pard\pardeftab720\sl440\partightenfactor0
+
+\fs35 \cf2 \cb5 \'a0
+\f3\fs31\fsmilli15750 \cf3 \cb4 \strokec3 Noble King_Arthur\cb1 \
+\pard\pardeftab720\sl380\partightenfactor0
+\cf3 \cb4 Noble Lancelot_du_Lac\cb1 \
+\cb4 Noble Jim\cb1 \
+\cb4 Noble Linus_Torvalds\cb1 \
+\cb4 Noble Bill_Gates\cb1 \
+\cb4 Warrior Tarzan 10\cb1 \
+\cb4 Warrior Merlin 15\cb1 \
+\cb4 Warrior Conan 12\cb1 \
+\cb4 Warrior Spock 15\cb1 \
+\cb4 Warrior Xena 20\cb1 \
+\cb4 Warrior Hulk 8\cb1 \
+\cb4 Warrior Hercules 3\cb1 \
+\cb4 Hire Jim Spock\cb1 \
+\cb4 Hire Lancelot_du_Lac Conan\cb1 \
+\cb4 Hire King_Arthur Merlin\cb1 \
+\cb4 Hire Lancelot_du_Lac Hercules\cb1 \
+\cb4 Hire Linus_Torvalds Xena\cb1 \
+\cb4 Hire Bill_Gates Hulk\cb1 \
+\cb4 Hire King_Arthur Tarzan\cb1 \
+\cb4 Status\cb1 \
+\cb4 Fire King_Arthur Tarzan\cb1 \
+\cb4 Status\cb1 \
+\cb4 Battle King_Arthur Lancelot_du_Lac\cb1 \
+\cb4 Battle Jim Lancelot_du_Lac\cb1 \
+\cb4 Battle Linus_Torvalds Bill_Gates\cb1 \
+\cb4 Battle Bill_Gates Lancelot_du_Lac\cb1 \
+\cb4 Status\cb1 \
+\cb4 Clear\cb1 \
+\cb4 Status
+\f1\fs35 \cf2 \cb5 \strokec2 \'a0\
+\pard\pardeftab720\sl360\sa180\partightenfactor0
+
+\f0\b\fs36 \cf2 \cb3 Example output:\
+\pard\pardeftab720\sl320\partightenfactor0
+
+\f3\b0\fs23\fsmilli11700 \cf3 \cb4 \strokec3 Status\
+======\
+Nobles:\
+King_Arthur has an army of 2\
+        Merlin: 15\
+        Tarzan: 10\
+Lancelot_du_Lac has an army of 2\
+        Conan: 12\
+        Hercules: 3\
+Jim has an army of 1\
+        Spock: 15\
+Linus_Torvalds has an army of 1\
+        Xena: 20\
+Bill_Gates has an army of 1\
+        Hulk: 8\
+Unemployed Warriors:\
+NONE\
+You don't work for me anymore Tarzan! -- King_Arthur.\
+Status\
+======\
+Nobles:\
+King_Arthur has an army of 1\
+        Merlin: 15\
+Lancelot_du_Lac has an army of 2\
+        Conan: 12\
+        Hercules: 3\
+Jim has an army of 1\
+        Spock: 15\
+Linus_Torvalds has an army of 1\
+        Xena: 20\
+Bill_Gates has an army of 1\
+        Hulk: 8\
+Unemployed Warriors:\
+Tarzan: 10\
+King_Arthur battles Lancelot_du_Lac\
+Mutual Annihalation: King_Arthur and Lancelot_du_Lac die at each other's hands\
+Jim battles Lancelot_du_Lac\
+He's dead, Jim\
+Linus_Torvalds battles Bill_Gates\
+Linus_Torvalds defeats Bill_Gates\
+Bill_Gates battles Lancelot_du_Lac\
+Oh, NO!  They're both dead!  Yuck!\
+Status\
+======\
+Nobles:\
+King_Arthur has an army of 1\
+        Merlin: 0\
+Lancelot_du_Lac has an army of 2\
+        Conan: 0\
+        Hercules: 0\
+Jim has an army of 1\
+        Spock: 15\
+Linus_Torvalds has an army of 1\
+        Xena: 12\
+Bill_Gates has an army of 1\
+        Hulk: 0\
+Unemployed Warriors:\
+Tarzan: 10\
+Status\
+======\
+Nobles:\
+NONE\
+Unemployed Warriors:\
+NONE
+\fs26 \cf4 \cb6 \strokec4 \
+}

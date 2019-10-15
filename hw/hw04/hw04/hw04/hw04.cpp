@@ -80,7 +80,7 @@ public:
     bool hire(Warrior& new_warrior){
         // if the noble is not dead AND warrior is not already hired
         // hire warrior
-        if (!dead and new_warrior.getHired()){
+        if (!dead && new_warrior.getHired()){
             // add newly hired warrior to army vector
             army.push_back(&new_warrior);
             // update total army strength
