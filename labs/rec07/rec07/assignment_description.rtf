@@ -1,0 +1,137 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 HelveticaNeue-Italic;
+\f3\fnil\fcharset0 LucidaGrande;\f4\fnil\fcharset0 HelveticaNeue-BoldItalic;}
+{\colortbl;\red255\green255\blue255;\red25\green25\blue25;\red255\green255\blue255;\red247\green247\blue247;
+}
+{\*\expandedcolortbl;;\cssrgb\c12941\c12941\c12941;\cssrgb\c100000\c100000\c100000;\cssrgb\c97647\c97647\c97647;
+}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid2\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl420\sa200\partightenfactor0
+
+\f0\b\fs40 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Overview\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl320\partightenfactor0
+\ls1\ilvl0
+\f1\b0\fs28 \cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 This can be a big project, but we will break it into pieces, of hopefully easy steps. We will also identify / distinguish between activities that are required, and others you are to do but only\'a0
+\f2\i if there is time\'a0\ul during the lab
+\f1\i0 \ulnone .\cb1 \
+\ls1\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The overall goal is to implement a transaction processing program for a Registrar, making use of separate compilation and namespaces.\cb1 \
+\ls1\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 But first we want to get something working in a single file, no separate compilation and no namespaces. Here we are not reading a file, instead just using local calls to the Registrar's methods to add students and courses, etc. We are not even implementing all of the possible functionality. For example, we will leave out dropping courses, students changing names, etc.\cb1 \
+\ls1\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Of course you want to test at every possible point! "Test early and often" is a common motto among successful developers.\cb1 \
+\ls1\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Only after all that works in a single file, then split it into multiple files, i.e. for each class a header and an implementation file, along with a cpp file for the "testing" code.\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sl320\partightenfactor0
+\ls1\ilvl1\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	
+\f3 \uc0\u9702 
+\f1 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Don't modify your original working code, the solution that is in a single file!\cb1 \
+\ls1\ilvl1\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	
+\f3 \uc0\u9702 
+\f1 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 When adding separate compilation, sometimes code that worked fine before now breaks. Good to have the working code to go back and look at.\cb1 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl320\partightenfactor0
+\ls1\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Next place the classes into the namespace BrooklynPoly.\cb1 \
+\ls1\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Only when all that is done, and only if there is time during lab, add the ability to process a file of commands for the registrar\cb1 \
+\ls1\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 And finally for those who are truely lightning fast, implement the functions marked as optional.\cb1 \
+\pard\pardeftab720\sl360\sa180\partightenfactor0
+
+\f0\b\fs36 \cf2 \cb3 Some Details\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\b0\fs28 \cf2 We have provided some starter code that is attached. It will save you a few minutes initially setting up the three classes and test code. No, it does even begin to address the issues of cyclic association.\
+We are assuming that\'a0
+\f2\i names are unique
+\f1\i0 \'a0(if they weren't we would have to turn everyone into a number). Remember, just because we occasionaly make such assumptions, you should never\'a0
+\f2\i assume
+\f1\i0 \'a0names are unique unless your spec says so. I have notiece that there is more than one person with the name "John" in the real world.\
+Also, we are assuming that, miraculously, students' names are all single tokens (if they weren't, things would just be more annoying).\
+Where do you think the Course and Student objects should live? Suppose you just kept a vector of them, why might that prove to be a disaster? You are going to have pointers from a Course to the Students. If the Students are in a vector, i.e. a vector<Student>, what might happen to their addresses with you push_back another Student? If the vector was full, then the underlying array would get reallocated and all the pointers to them would become invalid.\
+Note that we are\'a0
+\f4\i\b not
+\f1\i0\b0 \'a0asking you for copy control, despite the fact that the Registrar really\'a0
+\f2\i owns
+\f1\i0 \'a0all those objects on the heap.\
+Probably writing the code that looks for the course or student by name would make a useful method.\
+\pard\pardeftab720\sl340\sa200\partightenfactor0
+
+\f0\b \cf2 This is the end of the required portion of the assignment.
+\f1\b0 \
+\pard\pardeftab720\sl360\sa180\partightenfactor0
+
+\f0\b\fs36 \cf2 Second Part\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\b0\fs28 \cf2 Only after you have made sure that all of the Registrar's\'a0
+\f2\i required
+\f1\i0 \'a0functions work, then\'a0
+\f2\i if you have time in lab
+\f1\i0 , you can write a program to read and process a transaction file.\
+\pard\pardeftab720\sl360\sa180\partightenfactor0
+
+\f0\b\fs36 \cf2 The file of transactions\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\b0\fs28 \cf2 Your program will read a file that contains "transactions". Each line will tell the Registrar to do something. A file might look like:\
+\pard\pardeftab720\sl440\partightenfactor0
+
+\fs35 \cf2 \cb4 \'a0PrintReport\cb1 \
+\cb4 AddCourse CS101.001\cb1 \
+\cb4 PrintReport\cb1 \
+\cb4 AddStudent FritzTheCat\cb1 \
+\cb4 PrintReport\cb1 \
+\cb4 AddCourse CS102.001\cb1 \
+\cb4 PrintReport\cb1 \
+\cb4 EnrollStudentInCourse FritzTheCat CS102.001\cb1 \
+\cb4 PrintReport\cb1 \
+\cb4 EnrollStudentInCourse Bullwinkle CS101.001\cb1 \
+\cb4 PrintReport\cb1 \
+\cb4 CancelCourse CS102.001\cb1 \
+\cb4 [OPTIONAL - Would read line-by-line and then use stringstreams] EnrollStudentInCourse FritzTheCat\cb1 \
+\cb4 [OPTIONAL - do later if time] ChangeStudentName FritzTheCat MightyMouse\cb1 \
+\cb4 [OPTIONAL - do later if time] PrintReport\cb1 \
+\cb4 [OPTIONAL - do later if time] DropStudentFromCourse MightyMouse CS101.001\cb1 \
+\cb4 [OPTIONAL - do later if time] PrintReport\cb1 \
+\cb4 [OPTIONAL - do later if time] RemoveStudent FritzTheCat\cb1 \
+\cb4 [OPTIONAL - do later if time] PrintReport\cb1 \
+\cb4 PrintReport\cb1 \
+\cb4 Purge\'a0\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\fs28 \cf2 \cb3 Each transaction occurs on a separate line, ending with a newline character.\cb1 \uc0\u8232 \cb3 Some transactions have "parameters" like MighyMouse (a student's name) and CS101.001 (a course) in the "transaction":\cb1 \uc0\u8232 \cb3 DropStudentFromCourse MightyMouse CS101.001\
+The above file contents show all the possible transactions/commands that the file might contain.\cb1 \uc0\u8232 \cb3 It matches the same testing that was done in the tester code above - it's better to have a transaction file than having to constantly rewrite your tester program, eh?\cb1 \uc0\u8232 \cb3 Code for this part of the problem will read a line from the transaction file and call the appropriate methods in the appropriate objects to get this transaction done.\cb1 \uc0\u8232 \cb3 Note that it would be pretty useless to attempt this part until all the required functions are working!\
+\pard\pardeftab720\sl360\sa180\partightenfactor0
+
+\f0\b\fs36 \cf2 Error Checking in the Transaction File\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\b0\fs28 \cf2 Transactions may have errors. For example, a transaction may attempt to enroll a student in a course, who is not in the school.\cb1 \uc0\u8232 \cb3 In the file above, the line:\
+\pard\pardeftab720\sl440\partightenfactor0
+
+\fs35 \cf2 \cb4 \'a0EnrollStudentInCourse Bullwinkle CS101.001\'a0\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\fs28 \cf2 \cb3 should result in an error.\
+Other errors in a command, such as the line below (which appeared in the file above) which fails to mention what course the student is enrolling would also produce an error:\
+\pard\pardeftab720\sl440\partightenfactor0
+
+\fs35 \cf2 \cb4 \'a0EnrollStudentInCourse FritzTheCat\'a0\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\fs28 \cf2 \cb3 The program should print an appropriate error message and then continue, processing the next line.\
+\pard\pardeftab720\sl360\sa180\partightenfactor0
+
+\f0\b\fs36 \cf2 Third Part\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\b0\fs28 \cf2 If you have even more time (ok, not too likely), write the code for the [if time] items.\
+}
