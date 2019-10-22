@@ -345,5 +345,5 @@ void Registrar::purge(){
     for (size_t index=0; index<students.size(); ++index){
         delete students[index];
     }
-    students.clear()
+    students.clear();
 }
