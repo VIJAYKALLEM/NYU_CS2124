@@ -9,7 +9,7 @@ using namespace std;
     const string& Protector::getName() const{
         return name;
     }
-    Lord* Protector::getBoss() const{
+    const Lord* const Protector::getBoss() const{
         return boss;
     }
 
@@ -19,6 +19,10 @@ using namespace std;
             return true;
         }
         return false;
+    }
+    
+    void Protector::getFired(){
+        boss = nullptr;
     }
 
     bool Protector::isDead() const{
