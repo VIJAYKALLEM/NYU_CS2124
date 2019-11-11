@@ -109,6 +109,18 @@ namespace WarriorCraft{
         }
     }
 
+    void Lord::warriorRanAway(const Protector* const former_protec){
+        for (size_t i = 0; i < army.size(); ++i){
+            if (army[i] == former_protec){
+                Protector* temp = army[army.size()-1];
+                army[army.size()-1] = army[i];
+                army[i] = temp;
+                army.pop_back();
+                return;
+            }
+        }
+    }
+
     int Lord::getStrength() const{
         // strength getter
         return army_strength;

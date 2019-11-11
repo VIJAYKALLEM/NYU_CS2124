@@ -26,6 +26,7 @@ namespace WarriorCraft{
         virtual void printDefendingYell() const = 0;
         // set strength to 0 and dead to true
         void die();
+        void runAway();
     protected:
         // only derived protectors should see name and boss;
         const std::string& getName() const;

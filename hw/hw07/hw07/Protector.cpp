@@ -25,6 +25,11 @@ using namespace std;
         boss = nullptr;
     }
 
+    void Protector::runAway(){
+        boss->warriorRanAway(this);
+        cout << name << " flees in terror, abandoning his lord, " << boss->getName() << endl;
+        boss = nullptr;
+    }
     bool Protector::isDead() const{
         return dead;
     }

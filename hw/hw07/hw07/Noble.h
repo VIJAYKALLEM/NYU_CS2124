@@ -45,6 +45,7 @@ namespace WarriorCraft{
         //updates strengths of all protectors and recalculates army strength.
         void updateStrength(double ratio);
         void printBattleCrysIfNecessary() const;
+        void warriorRanAway(const Protector* const former_protec);
     private:
         std::vector<Protector*> army;
         int army_strength;
