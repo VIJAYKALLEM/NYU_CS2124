@@ -15,11 +15,14 @@ namespace WarriorCraft{
             return;
         }
         // if one of opponents is dead, battle cannot occur
-        else if (opponent.isDead() || dead){
-            cout << "He's dead, ";
-            if (dead){ cout << opponent.getName();}
-            else {cout << name;}
-            cout << endl;
+        else if (opponent.isDead()){
+            printBattleCrysIfNecessary();
+            cout << "He's dead, " << getName() << endl;
+            return;
+        }
+        else if (isDead()){
+            opponent.printBattleCrysIfNecessary();
+            cout << "He's dead, " << opponent.getName() << endl;
             return;
         }
         // if self object wins battle
@@ -29,6 +32,7 @@ namespace WarriorCraft{
             // kill opponent
         if (this->getStrength() > opponent.getStrength()){
             printBattleCrysIfNecessary();
+            opponent.printBattleCrysIfNecessary();
             cout << getName() << " defeats " << opponent.getName() << endl;
             double winning_ratio = opponent.getStrength() / getStrength();
             updateStrength(winning_ratio);
@@ -49,6 +53,7 @@ namespace WarriorCraft{
             // kill self.
         else{
             printBattleCrysIfNecessary();
+            opponent.printBattleCrysIfNecessary();
             cout << opponent.getName() << " defeats " << getName() << endl;
             double winning_ratio = getStrength() / opponent.getStrength();
             opponent.updateStrength(winning_ratio);
@@ -60,9 +65,6 @@ namespace WarriorCraft{
     void Noble::die(){
         dead = true;
     }
-
-    // empty function so that it can be overriden for Lords.
-    void Noble::printBattleCrysIfNecessary() const{}
 
     // returns dead status
     bool Noble::isDead() const{
@@ -79,7 +81,7 @@ namespace WarriorCraft{
 
     bool Lord::hires(Protector& new_protector) {
         // updates the Protector's boss, army vector, army strength total
-        if (!new_protector.isDead() && new_protector.hire(this)){
+        if (!new_protector.isDead() && !isDead() && new_protector.hire(this)){
             army.push_back(&new_protector);
             army_strength += new_protector.getStrength();
             return true;
@@ -157,6 +159,10 @@ namespace WarriorCraft{
     // strength getter
     int PersonWithStrengthToFight::getStrength() const{
         return strength;
+    }
+
+    void PersonWithStrengthToFight::printBattleCrysIfNecessary() const{
+        cout << "Ugh!"<< endl;
     }
 
     // sets strength to 0 and dead status to true (calls base class to set dead status)

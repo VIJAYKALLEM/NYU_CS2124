@@ -25,7 +25,7 @@ namespace WarriorCraft{
         // only Lords have to print a battle cry. Therefore this function is empty and
         // overriden only for Lords. That way it can be called on a generic noble object and
         // only print battle cry if noble is a lord.
-        virtual void printBattleCrysIfNecessary() const;
+        virtual void printBattleCrysIfNecessary() const = 0;
     private:
         std::string name;
         bool dead;
@@ -60,6 +60,7 @@ namespace WarriorCraft{
         // die method sets strength to 0.
         // die method ALSO calls Noble::die() to set bool dead to true.
         void die();
+        void printBattleCrysIfNecessary() const;
         void updateStrength(double ratio);
     private:
         int strength;
