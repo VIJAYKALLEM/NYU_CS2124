@@ -1,0 +1,307 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fnil\fcharset0 HelveticaNeue-Italic;\f4\fnil\fcharset0 LucidaGrande;\f5\fnil\fcharset0 HelveticaNeue-BoldItalic;
+}
+{\colortbl;\red255\green255\blue255;\red25\green25\blue25;\red255\green255\blue255;\red184\green14\blue61;
+\red247\green238\blue241;}
+{\*\expandedcolortbl;;\cssrgb\c12941\c12941\c12941;\cssrgb\c100000\c100000\c100000;\cssrgb\c78039\c14510\c30588;
+\cssrgb\c97647\c94902\c95686;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid2\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl420\sa200\partightenfactor0
+
+\f0\b\fs40 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Design decisions.\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\b0\fs28 \cf2 Our goal is to make a linked list class.\
+Singly or doubly linked? We will go with\'a0
+\f0\b \ul doubly linked
+\f1\b0 \ulnone . Why? It will simplify issues like how or where to add or remove a given item.\
+Some of our considerations will be to make it compatible with various C++ features, e.g. the ranged for and the STL (Standard Template Library) algorithms library. Providing\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 begin()
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0and\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 end()
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0methods that return iterators will buy us a lot.\
+However, we will also provide some functionality that the STL list class does not. After all, this is\'a0
+\f3\i our
+\f1\i0 \'a0class.\
+\pard\pardeftab720\sl340\sa200\partightenfactor0
+
+\f0\b \cf2 Sentinels
+\f1\b0 : We are not specifying whether or not to use sentinel(s), e.g. header / trailer nodes. We will leave that up to you. Likely you will choose to do whatever you did back in your data structures course. Please note, that your code will generally be easier to write if you do use sentinels.\
+
+\f0\b Nodes
+\f1\b0 : The client of the\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 List
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0class will never directly interact with the\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 Node
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0type. Therefore none of the public methods will return or be passed a\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 Node
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0or\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 Node*
+\f1\fs28 \cf2 \cb3 \strokec2 .\
+
+\f0\b Undefined behavior
+\f1\b0 : In some edge cases it may be unclear what a method should do. For example, what should a method that is supposed to return access to the first item do, e.g.. the method\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 front()
+\f1\fs28 \cf2 \cb3 \strokec2 , if there is nothing in the list? Whereever such a question comes up, our answer will be that the behavior is\'a0
+\f3\i undefined
+\f1\i0 . That could include the program crashing. The programmer using the method was responsible for ensuring that it is being used appropriately.\
+\pard\pardeftab720\sl420\sa200\partightenfactor0
+
+\f0\b\fs40 \cf2 Task One\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\b0\fs28 \cf2 This class will naturally have a private struct\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 Node
+\f1\fs28 \cf2 \cb3 \strokec2 . If we are constructing a doubly linked list, then the Node type will have not only data and next fields, but also a prior field. Be sure that all fields get\'a0
+\f3\i properly
+\f1\i0 \'a0initialized.\
+We will start by providing a simple class that supports:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl300\partightenfactor0
+\ls1\ilvl0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 push_back(int data)
+\f1\fs28 \cf2 \cb1 \strokec2 \
+\ls1\ilvl0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 pop_back()
+\f1\fs28 \cf2 \cb1 \strokec2 \
+\ls1\ilvl0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 front()
+\f1\fs28 \cf2 \cb3 \strokec2 .\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sl320\partightenfactor0
+\ls1\ilvl1\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	
+\f4 \uc0\u9702 
+\f1 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Returns the first data item in the list. (Note that's the data itself, not a Node or a pointer to the data)\cb1 \
+\ls1\ilvl1\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	
+\f4 \uc0\u9702 
+\f1 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The non-const version should be returning a reference to the data. Why? So that it can be used to\'a0
+\f3\i change
+\f1\i0 \'a0the data value.\cb1 \
+\ls1\ilvl1\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	
+\f4 \uc0\u9702 
+\f1 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The const version should return a constant reference to the data item, or if the data is a primitive it could be returning a copy.\cb1 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl300\partightenfactor0
+\ls1\ilvl0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 back()
+\f1\fs28 \cf2 \cb3 \strokec2 : follows the same rules as\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 front()
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0but serves to access the last item.\cb1 \
+\ls1\ilvl0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 size()
+\f1\fs28 \cf2 \cb3 \strokec2 . This should, of course, be a\'a0
+\f3\i constant
+\f1\i0 \'a0time operation. This is one of the advantages to having the list represented by a class.\cb1 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl320\partightenfactor0
+\ls1\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 An output operator\cb1 \
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+\cf2 \cb3 Modifying the list, whether adding or removing, will take a little more work than with a singly linked list. Don't be surprised if you have some segmentation faults...\
+Test out your functions. You should create a few lists, adding and removing items verifying that the contents are correct. (I have attached some test code. But perhaps you can come up with additional tests!)\
+\pard\pardeftab720\sl420\sa200\partightenfactor0
+
+\f0\b\fs40 \cf2 Task Two\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\b0\fs28 \cf2 Now that you have a reliable list class, add the following methods and test them:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl300\partightenfactor0
+\ls2\ilvl0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 push_front(int data)
+\f1\fs28 \cf2 \cb1 \strokec2 \
+\ls2\ilvl0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 pop_front()
+\f1\fs28 \cf2 \cb1 \strokec2 \
+\pard\pardeftab720\sl420\sa200\partightenfactor0
+
+\f0\b\fs40 \cf2 \cb3 Task Three\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\b0\fs28 \cf2 Naturally it is necessary for a list to have a\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 clear()
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0method. Implement and test it.\
+\pard\pardeftab720\sl420\sa200\partightenfactor0
+
+\f0\b\fs40 \cf2 Task Four\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\b0\fs28 \cf2 It is nice that we can\'a0
+\f3\i see
+\f1\i0 \'a0what's in the list, using the output operator, but we still can't\'a0
+\f3\i access
+\f1\i0 \'a0any of the items, other than the first and the last.\
+Let's solve that first with an index operator. With that and our size method, we can write a loop to print out the contents of a list, Write another loop to modify the value of each element and finally print out the list again.\
+Of course we want to be able to use the index operator on a constant List, and also use it to modify the contents of a List item.\
+Of course those loops are\'a0
+\f3\i horrendously
+\f1\i0 \'a0expensive!\
+\pard\pardeftab720\sl420\sa200\partightenfactor0
+
+\f0\b\fs40 \cf2 Task Five\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\b0\fs28 \cf2 Ok, but wouldn't it be cool to be able to use a ranged for? We did that fairly easily when we implemented the Vector class. It will take a bit more work with a list. Why?\
+First, remember that we need to provide methods\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 begin()
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0and\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 end()
+\f1\fs28 \cf2 \cb3 \strokec2 , and that their return values have to support, among other things,\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 operator++
+\f1\fs28 \cf2 \cb3 \strokec2 . That was easy with Vector's because we could just return the address of the first element for\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 begin()
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0and the address just past the last element for\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 end()
+\f1\fs28 \cf2 \cb3 \strokec2 . However with the\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 Node
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0objects in our list, they are not laid out contiguously as the items in a\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 Vector
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0are. That has the result that incrementing the address of one\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 Node
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0does not take us to the next.\
+What can we do?\
+[Heads up, this is a bit of a big one...]\
+We will create [yet] another type, called an\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 iterator
+\f1\fs28 \cf2 \cb3 \strokec2 .\
+Iterators can be really pretty simple. They will need a single field, a Node*. It is possible to also have them "know" what list instance they belong to, but we will leave that out for now.\
+In addition, iterators should support a few operations:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl300\partightenfactor0
+\ls3\ilvl0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 ++
+\f1\fs28 \cf2 \cb1 \strokec2 \uc0\u8232 \cb3 You can stick with just a pre-increment operator, if you like.\cb1 \
+\ls3\ilvl0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 --
+\f1\fs28 \cf2 \cb1 \strokec2 \uc0\u8232 \cb3 Again, you can stick with just a pre-decrement operator.\cb1 \
+\ls3\ilvl0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 ==
+\f1\fs28 \cf2 \cb1 \strokec2 \uc0\u8232 \cb3 Iterators will be equal if they are pointing to the same Node.\cb1 \
+\ls3\ilvl0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 !=
+\f1\fs28 \cf2 \cb1 \strokec2 \
+\ls3\ilvl0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 *
+\f1\fs28 \cf2 \cb1 \strokec2 \uc0\u8232 \cb3 The\'a0
+\f3\i dereference
+\f1\i0 \'a0operator.\cb1 \
+\pard\pardeftab720\sl300\sa200\partightenfactor0
+
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 iterator
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0also needs to provide suitable constructor(s).\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+\cf2 Copy constructor: While discussing constructors, we should\'a0\ul consider\ulnone \'a0the copy constructor. Our\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 iterator
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0type has a pointer to an item, a Node, that exists on the heap. What does that suggest?\'a0
+\f3\i Not
+\f1\i0 \'a0that we need copy control. Why not? Because the iterator does not\'a0
+\f3\i own
+\f1\i0 \'a0the Node. So we will\'a0
+\f3\i not
+\f1\i0 \'a0be doing a deep copy, and in fact do not need to implement a copy constructor. The one the system provides is good enough.\
+We can't really test or use this class unless we have a way to get hold of an iterator for a list. The main way to do that will be through two methods in our list class\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 begin()
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0and\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 end()
+\f1\fs28 \cf2 \cb3 \strokec2 . [You may remember that the STL's vector type supports those methods.]\
+The iterator that the\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 begin()
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0method returns will obviously have a pointer to the first\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 Node
+\f1\fs28 \cf2 \cb3 \strokec2 . What about the iterator returned by\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 end()
+\f1\fs28 \cf2 \cb3 \strokec2 ? Given the\'a0
+\f3\i use cases
+\f1\i0 \'a0we have discussed so far, a simple design that can work would be to have the\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 end()
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0iterator have a\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 nullptr
+\f1\fs28 \cf2 \cb3 \strokec2 , if you are not using sentinels. We may see later that there could be useful reasons to do otherwise, but this will certainly work for now.\
+What can we do with our list class now? Repeat the activities you did with the index operator, but this time using iterators.\
+Oh, one last point (for this task, anyway),\'a0
+\f3\i nest
+\f1\i0 \'a0you iterator class definition inside the definition of your List class. It only exists to support the List class and this is a common design.\
+\pard\pardeftab720\sl420\sa200\partightenfactor0
+
+\f0\b\fs40 \cf2 Task Six\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\b0\fs28 \cf2 We still haven't done much to justify defining a list, let alone a list class. What's missing?\
+Provide an insert method for the list class. What should it be passed? The data item, certainly. And how do we know where to put the data item? Also pass in an iterator! Given an iterator for the class it should be easy enough to insert an item. But we first need to agree on where we are going to put something, given the provided iterator. Do we put it before or after?\
+Well, how will we insert something at the beginning of the list? The only way we have to get there is the method begin() which hands us an iterator pointing at the first item. So if we want to add something to the head of the list using these iterators, we will need to have our insert method insert\'a0
+\f3\i before
+\f1\i0 \'a0the iterator.\
+Insert should return an iterator to the new item.\
+\pard\pardeftab720\sl340\sa200\partightenfactor0
+
+\f0\b \cf2 One last point!!!
+\f1\b0 \'a0The insert code will need to access the Node that the iterator is pointing at. Should iterators have some method to return the Node? Remember that iterators are used by code outside the List class and that code doesn't want to / shouldn't have to know about Nodes. But the List sure does! What's the point? List methods need to be able to know what Node an iterator "points" to. How? One way is to have the iterator class make the List class a friend. Yes,\'a0
+\f0\b you can make a\'a0
+\f5\i whole class
+\f0\i0 \'a0a friend
+\f1\b0 !\
+\pard\pardeftab720\sl420\sa200\partightenfactor0
+
+\f0\b\fs40 \cf2 Task Seven\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\b0\fs28 \cf2 Add an erase method to the class. What should it be passed? Again, an iterator! This time, there isn't any question about "where" to remove, as we will remove the Node that the iterator is pointing to.\
+Erase should return an iterator to the item that came after the one you erased.\
+\pard\pardeftab720\sl420\sa200\partightenfactor0
+
+\f0\b\fs40 \cf2 Task Eight (if time allows in lab)\
+\pard\pardeftab720\sl340\sa200\partightenfactor0
+
+\fs28 \cf2 Copy\'a0\ul control
+\f1\b0 \ulnone ! Yes, we\'a0
+\f3\i should
+\f1\i0 \'a0be able to pass a list by value and have that result in a\'a0
+\f3\i copy
+\f1\i0 . We should also not have to worry about all those Node objects getting lost and creating a memory leak. And it\'a0
+\f3\i should
+\f1\i0 \'a0be possible to assign one list, the source, to another, the target, causing the target to be replaced by a copy of the source.\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+\cf2 Implement the usual big three and demonstrate that they work.\
+While this is marked "if time allows", please note that it is a useful activity that does not require much code.\
+\pard\pardeftab720\sl420\sa200\partightenfactor0
+
+\f0\b\fs40 \cf2 Observations\
+\pard\pardeftab720\sl320\sa200\partightenfactor0
+
+\f1\b0\fs28 \cf2 We now have a fairly useful linked list class. However there are still a few things it would be nice to have. You've done enough for today, but you should take some time later to consider the following points:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl300\partightenfactor0
+\ls4\ilvl0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 const
+\f1\fs28 \cf2 \cb1 \strokec2 \uc0\u8232 \cb3 You may have noticed that we did not discuss\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 const
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0anywhere we have used iterators. Ideally, we want to have a notion of iterators that can be safely used on constant lists, e.g. lists that were passed by constant reference. Basic C++ notation does not give us a way to indicate whether an instance of iterator type would be able to modify the contents of the list. For that we will need an\'a0
+\f3\i additional type
+\f1\i0 , say,\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 const_iterator
+\f1\fs28 \cf2 \cb3 \strokec2 , that could move over a list but not be used to change anything.If you know how to do this, it would be a good thing to add, but it is not required.\cb1 \uc0\u8232 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl320\partightenfactor0
+\ls4\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Our list is not templated. If you have gone over templating then how much effort will it be to turn this into a generic class?\cb1 \
+\ls4\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 We have not yet experimented with the\'a0
+\f2\fs25\fsmilli12600 \cf4 \cb5 \strokec4 <algorithm>
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0library here. Again if you are familiar with any of the functions there, how well does our code work with them?\cb1 \
+}
