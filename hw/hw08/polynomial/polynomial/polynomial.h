@@ -67,7 +67,7 @@ class Polynomial{
     friend std::ostream& operator<<(std::ostream& os, const Polynomial& rhs);
 public:
     Polynomial();
-    Polynomial(std::initializer_list<int> nums);
+    Polynomial(const std::vector<int> nums);
     Polynomial(const Polynomial& rhs);
     ~Polynomial();
     Polynomial& operator=(const Polynomial& rhs);

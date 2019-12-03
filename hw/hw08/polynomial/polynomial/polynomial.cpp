@@ -179,7 +179,7 @@ ostream& operator<<(ostream& os, const Polynomial& rhs){
 
 Polynomial::Polynomial(): headptr(nullptr), degree(0) {};
 
-Polynomial::Polynomial(std::initializer_list<int> nums){
+Polynomial::Polynomial(const vector<int> nums){
     degree = 0;
     Node* old_headptr = nullptr;
     size_t list_size = 0;
